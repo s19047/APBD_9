@@ -12,6 +12,7 @@ namespace LinqConsoleApp
         public LinqSamples()
         {
             LoadData();
+            Task12();
         }
 
         public void LoadData()
@@ -361,7 +362,11 @@ namespace LinqConsoleApp
         //perform a CROSS JOIN join between collections Emps and Depts
         public void Task12()
         {
-            
+            var res = Emps.SelectMany(dept => Depts, (emp, dept) => new
+            {
+                employee = emp,
+                department = dept
+            });
         }
     }
 }
